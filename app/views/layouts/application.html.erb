@@ -10,6 +10,39 @@
   </head>
 
   <body>
+    <div class="header">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="row">
+            <div class="navbar-header">
+              <h2>Clonegram</h2>
+            </div>
+            <div id="sidebar">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <%= link_to "HOME", post_images_path, class:"glyphicon glyphicon-home" %>
+                </li>
+                <li>
+                  <!-- 未設定 -->
+                  <h3 class="glyphicon glyphicon-time"></h3>
+                </li>
+                <li>
+                  <!-- 未設定 -->
+                  <h3 class="glyphicon glyphicon-heart""></h3>
+                </li>
+                <li>
+                  <!-- 未設定 -->
+                  <h3 class="glyphicon glyphicon-user"></h3>
+                </li>
+                <li>
+                  <%= link_to ' logout', destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
     <%= yield %>
   </body>
 </html>
