@@ -19,6 +19,21 @@
   <strong>User:</strong>
   <%= @post_image.user_id %>
 </p>
+<table>
+	<tbody>
+        <% @post_images.each do |post_image| %>
+          <tr>
+            <td><%= post_image.image_id %></td>
+            <td><%= post_image.caption %></td>
+            <td><%= post_image.location %></td>
+            <td><%= post_image.user_id %></td>
+            <td><%= link_to 'Show', post_image %></td>
+            <td><%= link_to 'Edit', edit_post_image_path(post_image) %></td>
+            <td><%= link_to 'Destroy', post_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+    </tbody>
+</table>
 
 <%= link_to 'Edit', edit_post_image_path(@post_image) %> |
 <%= link_to 'Back', post_images_path %>

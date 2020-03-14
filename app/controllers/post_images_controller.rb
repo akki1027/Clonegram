@@ -13,6 +13,19 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new
   end
 
+  def create
+    @post_image = PostImage.new(post_image_params)
+    @post_image.user_id = current_user.id
+    if @post_image.save
+      flash[:create] = "You have posted a photo successfully."
+      redirect_to post_images_path(@book)
+    else
+      @post_images = PostImage.all
+      @user = current_user
+      render 'new'
+    end
+  end
+
   def edit
     post_images = PostImage.find(params[:id])
   end
@@ -23,19 +36,6 @@ class PostImagesController < ApplicationController
     redirect_to post_images_path
   end
 
-  def create
-    @post_image = PostImage.new(post_image_params)
-    @post_image.user_id = current_user.id
-    if @book.save
-      flash[:create] = "You have posted a photo successfully."
-      redirect_to post_image_path(@book)
-    else
-      @post_image = PostImage.all
-      @user = current_user
-      render 'index'
-    end
-  end
-
   def destroy
     post_images = PostImage.find(params[:id])
     post_image.destroy
@@ -44,7 +44,7 @@ class PostImagesController < ApplicationController
 
   private
     def post_image_params
-      params.require(:post_image).permit(:image_id, :caption, :location, :user_id)
+      params.require(:post_image).permit(:image, :caption, :location)
     end
     def correct_user
     @book = Book.find(params[:id])

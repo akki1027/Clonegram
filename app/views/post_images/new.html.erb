@@ -1,5 +1,36 @@
-<h1>New Post Image</h1>
-
 <%= render 'form', post_image: @post_image %>
 
-<%= link_to 'Back', post_images_path %>
+<div class="container">
+	<div class="new-post">
+		<h1 class="login-logo">Clonegram</h1>
+
+		<% if @post_image.errors.any? %>
+        	<div id="error_explanation">
+          		<h2 class="error-count"><%= pluralize(@post_image.errors.count, "error") %> prohibited this post_image from being saved:</h2>
+
+          		<ul>
+          		<% @post_image.errors.full_messages.each do |message| %>
+            		<li><%= message %></li>
+          		<% end %>
+          		</ul>
+        	</div>
+      	<% end %>
+
+		<%= form_for(@post_image) do |f| %>
+
+		    <div class="field">
+		    	<%= f.attachment_field :image %>
+			</div>
+
+			<div class="field">
+		    	<%= f.text_area :caption, placeholder:"Write a caption...", class:"caption-field" %>
+		    </div>
+
+		    <div class="field">
+		    	<%= f.text_field :location, placeholder:"Add Location", class:"text-field" %>
+		    </div>
+		    <%= f.submit "Share" %>
+		<% end %>
+		<%= link_to 'Back', post_images_path %>
+	</div>
+</div>

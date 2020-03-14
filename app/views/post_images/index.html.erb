@@ -1,44 +1,23 @@
 <div class="container">
     <div class="row">
+      <%= link_to 'New Post Image', new_post_image_path %>
     <p id="notice"><%= notice %></p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Image</th>
-          <th>Caption</th>
-          <th>Location</th>
-          <th>User</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+    <% @post_images.each do |post_image| %>
+      <div class="flex">
+        <div class="username-location">
+          <strong><%= post_image.user.name %></strong><br>
+          <span class="glyphicon glyphicon-map-marker"></span> <%= post_image.location %>
+        </div>
 
-    <div class="flex">
-      <% @post_images.each do |post_image| %>
-        <%= post_image.image_id %>
-        <%= post_image.caption %>
-        <%= post_image.location %>
-        <%= post_image.user_id %>
-      <% end %>
-    </div>
+        <div class="posted-content">
+          <%= attachment_image_tag post_image, :image, :fill, 598, 598 %>
+        </div>
 
-      <tbody>
-        <% @post_images.each do |post_image| %>
-          <tr>
-            <td><%= post_image.image_id %></td>
-            <td><%= post_image.caption %></td>
-            <td><%= post_image.location %></td>
-            <td><%= post_image.user_id %></td>
-            <td><%= link_to 'Show', post_image %></td>
-            <td><%= link_to 'Edit', edit_post_image_path(post_image) %></td>
-            <td><%= link_to 'Destroy', post_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <br>
-
-    <%= link_to 'New Post Image', new_post_image_path %>
+        <div class="caption">
+          <strong><%= post_image.user.name %></strong> <%= post_image.caption %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

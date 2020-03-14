@@ -11,7 +11,7 @@
 
   <body>
     <header>
-      <nav class="navbar-default navbar-fixed-top">
+      <nav class="navbar-default navbar-fixed-top", style="background-color:white;">
         <div class="container">
           <div class="navbar-left">
             <h2>Clonegram</h2>
@@ -21,7 +21,9 @@
             <div id="sidebar">
               <ul class="nav navbar-nav">
                 <li>
-                  <%= link_to "HOME", post_images_path, class:"glyphicon glyphicon-home" %>
+                  <%= link_to (post_images_path) do %>
+                    <span class="glyphicon glyphicon-home", style="font-size: 27px;"></span>
+                  <% end %>
                 </li>
                 <li>
                   <!-- 未設定 -->
@@ -36,7 +38,9 @@
                   <h3 class="glyphicon glyphicon-user"></h3>
                 </li>
                 <li>
-                  <%= link_to ' logout', destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %>
+                  <%= link_to (destroy_user_session_path), method: :delete do %>
+                    <span class="glyphicon glyphicon-log-out", style="font-size: 27px;"></span>
+                  <% end %>
                 </li>
               </ul>
             </div>
