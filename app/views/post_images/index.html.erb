@@ -5,9 +5,15 @@
 
     <% @post_images.each do |post_image| %>
       <div class="flex">
-        <div class="username-location">
-          <strong><%= post_image.user.name %></strong><br>
-          <span class="glyphicon glyphicon-map-marker"></span> <%= post_image.location %>
+        <div class="post-header">
+          <div class="username-location">
+            <strong><%= post_image.user.name %></strong><br>
+            <span class="glyphicon glyphicon-map-marker"></span> <%= post_image.location %>
+
+            <%= link_to (post_image) do %>
+              <i class="fas fa-ellipsis-h option-dot"></i>
+            <% end %>
+          </div>
         </div>
 
         <div class="posted-content">
@@ -15,7 +21,13 @@
         </div>
 
         <div class="caption">
-          <strong><%= post_image.user.name %></strong> <%= post_image.caption %>
+          <strong><%= post_image.user.name %></strong> <%= post_image.caption %><br>
+          <i class="far fa-comment"></i>
+          <h4><%= post_image.post_comments.count %>件のコメント</h4>
+          <% post_image.post_comments.each do |post_comment| %>
+            <a href="#" class="link-author"><%= post_comment.user.name %></a>
+            <%= post_comment.comment %>
+          <% end %>
         </div>
       </div>
     <% end %>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :post_images, only:[:new, :create, :index, :show] do
+  resources :post_images, only:[:new, :create, :index, :show, :edit] do
   	resource :post_comments, only:[:create]
   end
   devise_for :users

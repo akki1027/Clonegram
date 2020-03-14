@@ -1,39 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @post_image.image_id %>
-</p>
+<div class="flex">
+  <div class="post-header">
+    <div class="username-location">
+      <strong><%= @post_image.user.name %></strong><br>
+      <span class="glyphicon glyphicon-map-marker"></span> <%= @post_image.location %>
 
-<p>
-  <strong>Caption:</strong>
-  <%= @post_image.caption %>
-</p>
+      <%= link_to (@post_image) do %>
+        <i class="fas fa-ellipsis-h option-dot"></i>
+      <% end %>
+    </div>
+  </div>
 
-<p>
-  <strong>Location:</strong>
-  <%= @post_image.location %>
-</p>
+  <div class="posted-content">
+    <%= attachment_image_tag @post_image, :image, :fill, 598, 598 %>
+  </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @post_image.user_id %>
-</p>
-<table>
-	<tbody>
-        <% @post_images.each do |post_image| %>
-          <tr>
-            <td><%= post_image.image_id %></td>
-            <td><%= post_image.caption %></td>
-            <td><%= post_image.location %></td>
-            <td><%= post_image.user_id %></td>
-            <td><%= link_to 'Show', post_image %></td>
-            <td><%= link_to 'Edit', edit_post_image_path(post_image) %></td>
-            <td><%= link_to 'Destroy', post_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-    </tbody>
-</table>
+  <div class="caption">
+    <strong><%= @post_image.user.name %></strong> <%= @post_image.caption %><br>
+    <i class="far fa-comment"></i>
+    <h4><%= @post_image.post_comments.count %>件のコメント</h4>
+    <% @post_image.post_comments.each do |post_comment| %>
+      <a href="#" class="link-author"><%= post_comment.user.name %></a>
+      <%= @post_comment.comment %>
+    <% end %>
+    <p>
+      <%= link_to 'Edit', edit_post_image_path(@post_image) %> |
+      <%= link_to 'Destroy', @post_image, method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <%= link_to 'Back', post_images_path %>
+    </p>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_post_image_path(@post_image) %> |
-<%= link_to 'Back', post_images_path %>
+
+
