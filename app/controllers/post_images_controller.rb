@@ -3,6 +3,7 @@ class PostImagesController < ApplicationController
   def index
     @post_images = PostImage.all
     @user = current_user
+    @post_comment = PostComment.new
   end
 
   def show

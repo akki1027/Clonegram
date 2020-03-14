@@ -21,8 +21,10 @@
     <i class="far fa-comment"></i>
     <h4><%= @post_image.post_comments.count %>件のコメント</h4>
     <% @post_image.post_comments.each do |post_comment| %>
-      <a href="#" class="link-author"><%= post_comment.user.name %></a>
-      <%= @post_comment.comment %>
+      <div>
+        <a href="#" class="link-author"><%= post_comment.user.name %></a>
+        <%= post_comment.comment %>
+      </div>
     <% end %>
     <p>
       <%= link_to 'Edit', edit_post_image_path(@post_image) %> |
