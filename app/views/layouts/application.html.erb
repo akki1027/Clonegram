@@ -10,15 +10,16 @@
   </head>
 
   <body>
-    <div class="header">
-      <nav class="navbar navbar-default navbar-fixed-top">
+    <header>
+      <nav class="navbar-default navbar-fixed-top">
         <div class="container">
-          <div class="row">
-            <div class="navbar-header">
-              <h2>Clonegram</h2>
-            </div>
+          <div class="navbar-left">
+            <h2>Clonegram</h2>
+          </div>
+
+          <div class="navbar-right">
             <div id="sidebar">
-              <ul class="nav navbar-nav navbar-right">
+              <ul class="nav navbar-nav">
                 <li>
                   <%= link_to "HOME", post_images_path, class:"glyphicon glyphicon-home" %>
                 </li>
@@ -42,7 +43,8 @@
           </div>
         </div>
       </nav>
-    </div>
+    </header>
+
     <%= yield %>
   </body>
 </html>

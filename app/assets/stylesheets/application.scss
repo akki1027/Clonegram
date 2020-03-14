@@ -16,3 +16,75 @@
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";            /*ここを追加*/
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+	/*fixed-topを直すため*/
+	padding-top: 70px;
+}
+
+a:visited {
+    color: blue;
+}
+
+a:hover {
+	text-decoration: none;
+	background-color: #fff;
+}
+
+h1 {
+	font-size: 60px;
+	font-family: Brush Script MT;
+}
+
+/* login screen */
+.login-box {
+	width: 350px;
+	border: 2px solid #dbdbdb;
+	margin: 0 auto;
+	padding: 10px;
+	text-align: center;
+}
+
+.login-logo {
+	font-size: 60px;
+	font-family: Brush Script MT;
+	margin-bottom: 35px;
+}
+
+.text-field {
+	width: 80%;
+	height: 34px;
+}
+
+.btn-info {
+	width: 80%;
+	height: 27px;
+	border-radius: 2px;
+}
+
+/* sign up screen*/
+.sign-up-box {
+	width: 350px;
+	border: 2px solid #dbdbdb;
+	margin: 0 auto;
+	padding: 10px;
+	text-align: center;
+}
+
+.sign-up-message {
+	width: 85%;
+	margin: 0 auto;
+	margin-bottom: 35px;
+	opacity: 0.5;
+}
+
+.btn-primary {
+	width: 80%;
+	height: 27px;
+	border-radius: 2px;
+}
