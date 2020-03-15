@@ -27,9 +27,11 @@
       </div>
     <% end %>
     <p>
-      <%= link_to 'Edit', edit_post_image_path(@post_image) %> |
-      <%= link_to 'Destroy', @post_image, method: :delete, data: { confirm: 'Are you sure?' } %> |
-      <%= link_to 'Back', post_images_path %>
+      <% if @post_image.user == current_user %>
+        <%= link_to 'Edit', edit_post_image_path(@post_image) %> |
+        <%= link_to 'Destroy', post_image_path(@post_image), method: :delete, data: { confirm: 'Are you sure?' } %> |
+        <%= link_to 'Back', post_images_path %>
+      <% end %>
     </p>
   </div>
 </div>
