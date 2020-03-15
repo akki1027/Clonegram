@@ -35,8 +35,9 @@
                   <h3 class="glyphicon glyphicon-heart""></h3>
                 </li>
                 <li>
-                  <!-- 未設定 -->
-                  <h3 class="glyphicon glyphicon-user"></h3>
+                  <%= link_to (user_path(current_user.id)) do %>
+                    <span class="glyphicon glyphicon-user", style="font-size: 27px"></span>
+                  <% end %>
                 </li>
                 <li>
                   <%= link_to (destroy_user_session_path), method: :delete do %>

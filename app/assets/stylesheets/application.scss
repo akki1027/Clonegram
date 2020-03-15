@@ -146,3 +146,22 @@ h2 {
 }
 
 
+
+/*user/show*/
+.flex-user-show {
+	width: 300px;
+	background-color: #fff;
+	margin-left: 30px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border: 1px solid #efefef;
+	display: flex;
+}
+
+.flex-user-show > .show {
+	margin-right: 10px;
+	background-color: #fff;
+}
+
+
+

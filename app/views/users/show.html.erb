@@ -1,0 +1,50 @@
+<div class="flex-user-show">
+	<% @post_images.each do |post_image| %>
+    	<div class=show>
+	    	<div class="post-header">
+	        	<div class="username-location">
+	            	<strong><%= post_image.user.name %></strong><br>
+	            	<span class="glyphicon glyphicon-map-marker"></span> <%= post_image.location %>
+
+	            	<%= link_to (post_image) do %>
+	            		<i class="fas fa-ellipsis-h option-dot"></i>
+	            	<% end %>
+	            </div>
+	        </div>
+
+	        <div class="posted-content">
+	          <%= attachment_image_tag post_image, :image, :fill, 298, 298 %>
+	        </div>
+
+	        <div class="caption">
+	        	<strong><%= post_image.user.name %></strong> <%= post_image.caption %><br>
+	        	<i class="far fa-comment"></i>
+
+	            <% if post_image.favorited_by?(current_user) %>
+	            <%= link_to post_image_favorites_path(post_image), method: :delete do %>
+	            	<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+	                <%= post_image.favorites.count %> いいね
+	                <% end %>
+	            <% else %>
+	            <%= link_to post_image_favorites_path(post_image), method: :post do %>
+	              <i class="fa fa-heart-o" aria-hidden="true"></i>
+	              <%= post_image.favorites.count %> いいね
+	              <% end %>
+	            <% end %>
+
+		        <%= form_for [post_image, @post_comment] do |f| %>
+		            <%= f.text_area :comment, class: "form-control", placeholder: "コメントをここに" %>
+		        	<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20" %>
+		        <% end %>
+
+	          	<h4><%= post_image.post_comments.count %>件のコメント</h4>
+	          	<% post_image.post_comments.each do |post_comment| %>
+	            	<div>
+	              		<a href="#" class="link-author"><%= post_comment.user.name %></a>
+	              		<%= post_comment.comment %>
+	            	</div>
+	            <% end %>
+	        </div>
+	    </div>
+	<% end %>
+</div>
